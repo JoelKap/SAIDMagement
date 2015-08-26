@@ -29,7 +29,7 @@ namespace SAIDManangementSystem.Controllers.Api
         {
             try
             {
-                throw new Exception("NOT LOADING");
+               
                 //MOCKED DATA
                 //todo will be fixed when am done with client side
                 var userDumiData = new IdModel()
