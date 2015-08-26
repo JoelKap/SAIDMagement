@@ -16,6 +16,7 @@
 
 
     self.verify = function (item) {
+       // $("#idNumber")[0].disabled = true;
         self.GeneratedId('');
         if (validInput()) {
             self.getData('/api/Home/GetUserDetails?id=' + item.SAIdValue(), self.UserDetails, function (data) {
@@ -38,11 +39,18 @@
    
     
     self.generate = function () {
-        if (validedGenerateId()) {
+        self.SAId('');
+        self.IdStatus('');
+        self.DateConverter('');
+        self.Gender('');
+        self.IsCitizen('');
+        self.SAIdValue('');
+       // $('#idNumber').prop('disabled', true);
+
             self.getData('/api/Home', self.Id, function (data) {
                 self.GeneratedId(self.Id());
             });
-        }
+      
     }
 
     function validInput() {
@@ -54,12 +62,5 @@
         return isValid;
     }
      
-    function validedGenerateId() {
-        var isValid = true;
-        if ($("#idNumber").val() != "") {
-            toastr["error"]("Please removed typed value");
-            isValid = false;
-        }
-        return isValid;
-    }
+   
 }

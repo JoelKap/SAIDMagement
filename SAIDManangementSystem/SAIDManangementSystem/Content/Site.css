@@ -32,8 +32,11 @@ textarea {
 }
 
 .generatedId {
-    color: red;
-    text-align: center;
-    font-size: 50px;
-    font-family: Times New Roman
+    color: red !important ; 
+    text-align: center ;
+    font-size: 50px ;
+    font-family: Times New Roman  ;
+    text-decoration: none !important ;
+    
+
 }
