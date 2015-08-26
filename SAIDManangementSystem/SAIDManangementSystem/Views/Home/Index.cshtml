@@ -1,24 +1,55 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET Management System</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿<script src="~/Scripts/ViewModels/IDViewModel.js"></script>
+<script src="~/Scripts/ViewModels/BaseViewModel.js"></script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+<script src="~/Scripts/knockout.mapping-latest.js"></script>
+<link href="~/Content/toastr.css" rel="stylesheet" />
+<script src="~/Scripts/toastr.js"></script>
+<div class="jumbotron">
+    <h1> <a style="color:red"> SA ID </a>MANGEMENT SYSTEM</h1>
+    <p class="lead" style="color:lightcoral; font-size: 20px; text-transform: uppercase">Please type in ID Number to verify status it status</p>
+    @*<p class="lead">OR click on the button generate different valid ID Number</p>*@
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
+<div class="container" style="text-align: center">
+    <form class="form-inline">
+        <div class="form-group">
+            <label class="sr-only" for="idNumber">ID Number</label>
+            <input type="text" class="form-control" id="idNumber" placeholder="ID Number" data-bind="value: SAIdValue">
+        </div>
+        <button type="button" class="btn btn-primary" data-bind="click: $root.verify">Verify ID</button>
+        <button type="button" class="btn btn-success" data-bind="click: $root.generate">Generate</button>
+    </form>
+    <br/>
+    <br/>
 </div>
+<table align="center" class="home-Page">
+    <tbody>
+        <tr>
+            <td style="text-align: left">South African ID Number:</td>
+            <td  class="displayValue"><div style="margin-right:5px;" data-bind="text: SAId">n/a</div></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">ID Number Status:</td>
+            <td class="displayValue"><div style="font-weight:bold;margin-right:5px;" data-bind="text: IdStatus">n/a</div></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">Birth Date:</td>
+            <td class="displayValue"><div style="font-weight:bold;margin-right:5px;" data-bind="text: DateConverter">n/a</div></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">Gender:</td>
+            <td class="displayValue"><div style="font-weight:bold;margin-right:5px;" data-bind="text: Gender">n/a</div></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">SA Citizen:</td>
+            <td class="displayValue"><div style="font-weight:bold;margin-right:5px;" data-bind="text: IsCitizen">n/a</div></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        var idVm =new IdViewModel();
+        ko.applyBindings(idVm);
+    })
+</script>

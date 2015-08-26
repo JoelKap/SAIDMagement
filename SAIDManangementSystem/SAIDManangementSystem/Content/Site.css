@@ -15,3 +15,18 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.home-Page {
+    width: 500px;
+    letter-spacing: 2px;
+    padding: 20px;
+    border: 2px;
+   
+    border: 1px solid lightgrey;
+    margin-bottom: 0;
+}
+
+.displayValue {
+    width: 150px;
+    text-align: right
+}
