@@ -1,7 +1,7 @@
-﻿body {
+﻿/*body {
     padding-top: 50px;
     padding-bottom: 20px;
-}
+}*/
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -29,4 +29,11 @@ textarea {
 .displayValue {
     width: 150px;
     text-align: right
+}
+
+.generatedId {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    font-family: Times New Roman
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SAIDManangementSystem.BusinessLayerLogic;
 using SAIDManangementSystem.Models;
 
 namespace SAIDManangementSystem.Controllers.Api
@@ -16,7 +17,9 @@ namespace SAIDManangementSystem.Controllers.Api
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var bll = new Idbll();
+                var id = bll.GetValidGeneratedId();
+                return Request.CreateResponse(HttpStatusCode.OK, id);
             }
             catch (Exception exception)
             {
@@ -29,21 +32,9 @@ namespace SAIDManangementSystem.Controllers.Api
         {
             try
             {
-               
-                //MOCKED DATA
-                //todo will be fixed when am done with client side
-                var userDumiData = new IdModel()
-                {
-                    Birthdate = new DateTime(1999,01,25).Date,
-                    Gender = "Male",
-                    IdStatus = "Single",
-                    IsCitizen = true,
-                    SAId = 12345678965412 
-                };
-                 var dt = userDumiData.Birthdate.ToShortDateString();
-                userDumiData.DateConverter = dt;
-               
-               return Request.CreateResponse(HttpStatusCode.OK,userDumiData);
+                var bll = new Idbll();
+                var userDetail = bll.GetIdUserDetailByIdNumber(id);
+                return Request.CreateResponse(HttpStatusCode.OK, userDetail);
             }
             catch (Exception exception)
             {

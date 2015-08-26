@@ -12,7 +12,8 @@ namespace SAIDManangementSystem.Models
         public DateTime Birthdate { get; set; }
         public string Gender { get; set; }
         public bool IsCitizen { get; set; } 
-        public string DateConverter { get; set; }
+        public string DateConverter { get; set; } 
+        public long GeneratedId { get; set; }
 
     }
 }

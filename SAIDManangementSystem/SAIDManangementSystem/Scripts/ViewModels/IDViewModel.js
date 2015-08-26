@@ -4,8 +4,8 @@
 
     self.url = '/api/Home';
     self.UserDetails = ko.observable();
-
-
+    self.Id = ko.observable();
+    self.GeneratedId = ko.observable();
 
     self.SAId = ko.observable();
     self.IdStatus = ko.observable();
@@ -16,6 +16,7 @@
 
 
     self.verify = function (item) {
+        self.GeneratedId('');
         if (validInput()) {
             self.getData('/api/Home/GetUserDetails?id=' + item.SAIdValue(), self.UserDetails, function (data) {
                 if (data.statusText == "OK") {
@@ -34,10 +35,12 @@
         }
     }
 
+   
+    
     self.generate = function () {
         if (validedGenerateId()) {
-            self.getData('/api/Home', self.UserDetails, function(data) {
-                
+            self.getData('/api/Home', self.Id, function (data) {
+                self.GeneratedId(self.Id());
             });
         }
     }
