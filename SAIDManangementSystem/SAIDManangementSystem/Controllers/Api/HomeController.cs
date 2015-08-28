@@ -28,7 +28,7 @@ namespace SAIDManangementSystem.Controllers.Api
         }
 
         // GET: api/Home/5 
-        public HttpResponseMessage GetUserDetails(int id)
+        public HttpResponseMessage GetUserDetails(string id)
         {
             try
             {

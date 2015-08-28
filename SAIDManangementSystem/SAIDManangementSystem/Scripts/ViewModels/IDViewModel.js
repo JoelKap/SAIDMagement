@@ -8,11 +8,11 @@
     self.GeneratedId = ko.observable();
 
     self.SAId = ko.observable();
-    self.IdStatus = ko.observable();
     self.DateConverter = ko.observable();
     self.Gender = ko.observable();
     self.IsCitizen = ko.observable();
     self.SAIdValue = ko.observable();
+    self.Age = ko.observable();
 
 
     self.verify = function (item) {
@@ -25,9 +25,9 @@
                         toastr["success"]("Retrived successfully!");
                     }, 500);
                     self.SAId(self.UserDetails().SAId);
-                    self.IdStatus(self.UserDetails().IdStatus);
                     self.DateConverter(self.UserDetails().DateConverter);
                     self.Gender(self.UserDetails().Gender);
+                    self.Age(self.UserDetails().Age);
                     self.IsCitizen(self.UserDetails().IsCitizen);
                 } else {
                     toastr["error"]("the following error occured" + " " + data.responseText);
@@ -40,11 +40,11 @@
     
     self.generate = function () {
         self.SAId('');
-        self.IdStatus('');
         self.DateConverter('');
         self.Gender('');
         self.IsCitizen('');
         self.SAIdValue('');
+        self.Age('');
        // $('#idNumber').prop('disabled', true);
 
             self.getData('/api/Home', self.Id, function (data) {

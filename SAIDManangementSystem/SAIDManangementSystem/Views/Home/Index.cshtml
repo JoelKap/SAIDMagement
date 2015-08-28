@@ -8,7 +8,7 @@
 <div class="jumbotron">
     <h1> <a style="color:red"> SA ID </a>MANGEMENT SYSTEM</h1>
     <p class="lead" style="color:lightcoral; font-size: 20px; text-transform: uppercase">Please type in ID Number to verify status it status</p>
-   
+
 </div>
 <div class="container" style="text-align: center">
     <form class="form-inline">
@@ -19,24 +19,20 @@
         <button type="button" class="btn btn-primary" data-bind="click: $root.verify">Verify ID</button>
         <button type="button" class="btn btn-success" data-bind="click: $root.generate">Generate</button>
     </form>
-    <br/>
-    <br/>
-    <a class="generatedId" data-bind="text: GeneratedId"></a>  
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <a class="generatedId" data-bind="text: GeneratedId"></a>
+    <br />
+    <br />
 
 
-    
+
 </div>
 <table align="center" class="home-Page">
     <tbody>
         <tr>
             <td style="text-align: left">South African ID Number:</td>
-            <td  class="displayValue"><div style="margin-right:5px;" data-bind="text: SAId">n/a</div></td>
-        </tr>
-        <tr>
-            <td style="text-align: left">ID Number Status:</td>
-            <td class="displayValue"><div style="font-weight:bold;margin-right:5px;" data-bind="text: IdStatus">n/a</div></td>
+            <td class="displayValue"><div style="margin-right:5px;" data-bind="text: SAId">n/a</div></td>
         </tr>
         <tr>
             <td style="text-align: left">Birth Date:</td>
@@ -47,6 +43,10 @@
             <td class="displayValue"><div style="font-weight:bold;margin-right:5px;" data-bind="text: Gender">n/a</div></td>
         </tr>
         <tr>
+            <td style="text-align: left">Age:</td>
+            <td class="displayValue"><div style="font-weight:bold;margin-right:5px;" data-bind="text: Age">n/a</div></td>
+        </tr>
+        <tr>
             <td style="text-align: left">SA Citizen:</td>
             <td class="displayValue"><div style="font-weight:bold;margin-right:5px;" data-bind="text: IsCitizen">n/a</div></td>
         </tr>
@@ -54,8 +54,8 @@
 </table>
 
 <script>
-    $(document).ready(function() {
-        var idVm =new IdViewModel();
+    $(document).ready(function () {
+        var idVm = new IdViewModel();
         ko.applyBindings(idVm);
     })
 </script>
