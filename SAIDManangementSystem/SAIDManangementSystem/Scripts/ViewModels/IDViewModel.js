@@ -14,10 +14,17 @@
     self.SAIdValue = ko.observable();
     self.Age = ko.observable();
 
+    
 
     self.verify = function (item) {
-       // $("#idNumber")[0].disabled = true;
+      
+
         self.GeneratedId('');
+
+        $('input').keyup(function() {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+        });
+
         if (validInput()) {
             self.getData('/api/Home/GetUserDetails?id=' + item.SAIdValue(), self.UserDetails, function (data) {
                 if (data.statusText == "OK") {
