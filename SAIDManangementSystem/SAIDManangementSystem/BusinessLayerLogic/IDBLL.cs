@@ -73,6 +73,9 @@ namespace SAIDManangementSystem.BusinessLayerLogic
         
         public IdModel GetIdUserDetailByIdNumber(string idNumber)
         {
+            if (!idNumber.All(c=> Char.IsNumber(c)))
+                throw new Exception("Only numeric values are allowed");
+
             var iDModel = new IdModel();
             var regex = "(?<Year>[0-9][0-9])(?<Month>([0][1-9])|([1][0-2]))(?<Day>([0-2][0-9])|([3][0-1]))(?<Gender>[0-9])(?<Series>[0-9]{3})(?<Citizenship>[0-9])(?<Uniform>[0-9])(?<Control>[0-9])";
             
@@ -183,22 +186,30 @@ namespace SAIDManangementSystem.BusinessLayerLogic
         private string ValidateAndReturnDateOfBirth(string idNumber)
         {
 
-            if (idNumber.Length == 13)
+            try
             {
-                DateTime date = DateTime.ParseExact(idNumber.Substring(0, 2) + "/" + idNumber.Substring(2, 2) + "/" + idNumber.Substring(4, 2), "yy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
-
-                int years = DateTime.Now.Year - date.Year;
-
-                if (years < 0)
+                if (idNumber.Length == 13)
                 {
-                    date = DateTime.ParseExact("19" + idNumber.Substring(0, 2) + "/" + idNumber.Substring(2, 2) + "/" + idNumber.Substring(4, 2), "yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
-                }
+                    DateTime date = DateTime.ParseExact(idNumber.Substring(0, 2) + "/" + idNumber.Substring(2, 2) + "/" + idNumber.Substring(4, 2), "yy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
 
-                return date.ToShortDateString();
+                    int years = DateTime.Now.Year - date.Year;
+
+                    if (years < 0)
+                    {
+                        date = DateTime.ParseExact("19" + idNumber.Substring(0, 2) + "/" + idNumber.Substring(2, 2) + "/" + idNumber.Substring(4, 2), "yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                    }
+
+                    return date.ToShortDateString();
+                }
+                else
+                {
+                    throw new Exception("Invalid ID Number");
+                }
             }
-            else
+            catch (Exception exception)
             {
-                throw new Exception("Invalid ID");
+                
+                throw new Exception("The date of birth was incorrect");
             }
 
         }

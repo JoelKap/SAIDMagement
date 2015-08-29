@@ -6,15 +6,16 @@
 <link href="~/Content/toastr.css" rel="stylesheet" />
 <script src="~/Scripts/toastr.js"></script>
 <div class="jumbotron">
-    <h1> <a style="color:red"> SA ID </a>MANGEMENT SYSTEM</h1>
-    <p class="lead" style="color:lightcoral; font-size: 20px; text-transform: uppercase">Please type in ID Number to verify status it status</p>
-
+    <h1> <a class="saId"> SA ID </a>MANGEMENT SYSTEM</h1>
+    <div>
+        <p class="lead" style="color:lightcoral; font-size: 16px; text-transform: uppercase">Please type in ID Number to verify status it status <br /> or click to generate a valid ID Number</p>
+    </div>  
 </div>
 <div class="container" style="text-align: center">
     <form class="form-inline">
         <div class="form-group">
             <label class="sr-only" for="idNumber">ID Number</label>
-            <input type="text" id="idNumber"  class="form-control" id="idNumber" placeholder="ID Number" data-bind="value: SAIdValue">
+            <input type="text" id="idNumber"  class="form-control" maxlength="13" placeholder="ID Number" data-bind="value: SAIdValue">
         </div>
         <button type="button" class="btn btn-primary" data-bind="click: $root.verify">Verify ID</button>
         <button type="button" class="btn btn-success" data-bind="click: $root.generate">Generate</button>

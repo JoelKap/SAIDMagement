@@ -14,21 +14,14 @@
     self.SAIdValue = ko.observable();
     self.Age = ko.observable();
 
-    
+
 
     self.verify = function (item) {
-      
-
         self.GeneratedId('');
-
-        $('input').keyup(function() {
-            this.value = this.value.replace(/[^0-9\.]/g, '');
-        });
-
         if (validInput()) {
             self.getData('/api/Home/GetUserDetails?id=' + item.SAIdValue(), self.UserDetails, function (data) {
                 if (data.statusText == "OK") {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         toastr["success"]("Retrived successfully!");
                     }, 500);
                     self.SAId(self.UserDetails().SAId);
@@ -43,8 +36,6 @@
         }
     }
 
-   
-    
     self.generate = function () {
         self.SAId('');
         self.DateConverter('');
@@ -52,12 +43,10 @@
         self.IsCitizen('');
         self.SAIdValue('');
         self.Age('');
-       // $('#idNumber').prop('disabled', true);
+        self.getData('/api/Home', self.Id, function (data) {
+            self.GeneratedId(self.Id());
+        });
 
-            self.getData('/api/Home', self.Id, function (data) {
-                self.GeneratedId(self.Id());
-            });
-      
     }
 
     function validInput() {
@@ -66,8 +55,13 @@
             toastr["error"]("Please type in Id Number");
             isValid = false;
         }
+
+        else if ($('#idNumber').val().length < 13) {
+            toastr["error"]("Id Number can't be less then 13 character long!");
+            isValid = false;
+        }
         return isValid;
     }
-     
-   
+
+
 }
